@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="2" total="3" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="144335" started-at="2021-05-07T08:45:31 IST" finished-at="2021-05-07T08:47:55 IST">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="144335" started-at="2021-05-07T08:45:31 IST" finished-at="2021-05-07T08:47:55 IST">
+      <class name="com.j2store.UIAutomation.testcases.TC1_VerifyLoginPageDisplayed">
+        <test-method status="PASS" signature="preRequest()[pri:0, instance:com.j2store.UIAutomation.testcases.TC1_VerifyLoginPageDisplayed@23faf8f2]" name="preRequest" is-config="true" duration-ms="94196" started-at="2021-05-07T08:45:31 IST" finished-at="2021-05-07T08:47:05 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- preRequest -->
+        <test-method status="PASS" signature="verifyValidLogin()[pri:3, instance:com.j2store.UIAutomation.testcases.TC1_VerifyLoginPageDisplayed@23faf8f2]" name="verifyValidLogin" duration-ms="31031" started-at="2021-05-07T08:47:05 IST" finished-at="2021-05-07T08:47:36 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyValidLogin -->
+        <test-method status="PASS" signature="teardown()[pri:0, instance:com.j2store.UIAutomation.testcases.TC1_VerifyLoginPageDisplayed@23faf8f2]" name="teardown" is-config="true" duration-ms="18942" started-at="2021-05-07T08:47:36 IST" finished-at="2021-05-07T08:47:55 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+      </class> <!-- com.j2store.UIAutomation.testcases.TC1_VerifyLoginPageDisplayed -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

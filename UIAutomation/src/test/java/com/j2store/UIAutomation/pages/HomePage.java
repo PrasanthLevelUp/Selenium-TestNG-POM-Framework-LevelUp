@@ -8,11 +8,10 @@ import com.j2store.UIAutomation.baseDrivers.BaseDriver;
 
 public class HomePage extends BaseDriver {
 	
-	
 	@FindBy(xpath="//a[contains(text(),'Login')]") WebElement loginBtn; 
 	@FindBy(xpath="//p/a[contains(text(),'Demo')]") WebElement demoBtn; 
 	
-	public HomePage(){
+	public HomePage() {
 		PageFactory.initElements(driver, this);
 	}
 	
