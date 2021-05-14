@@ -14,20 +14,23 @@ public class BaseDriver {
 
 	public static WebDriver driver;
 	public static Properties prop;
-	public static File file;
+	public static File excelfile;
 	public static FileInputStream fis;
 	public static XSSFWorkbook xlsxbook;
+	public static String TCName;
 
 	public BaseDriver() {
 		try {
-			file = new File(System.getProperty("user.dir")+"/TestData/TestData.xlsx");
-			fis = new FileInputStream(file);
-			xlsxbook = new XSSFWorkbook(fis);
+		//Property File setup	
 		prop = new Properties();
-		FileInputStream file = new FileInputStream(System.getProperty("user.dir")
+		FileInputStream propfile = new FileInputStream(System.getProperty("user.dir")
 				+ "\\src\\test\\java\\com\\j2store\\UIAutomation\\config\\config.properties");
-		prop.load(file);
-		prop.setProperty("Test", "LevelUp");
+		prop.load(propfile);
+		
+		//excel file setup
+		excelfile = new File(System.getProperty("user.dir")+prop.getProperty("testdatapath"));
+		fis = new FileInputStream(excelfile);
+		xlsxbook = new XSSFWorkbook(fis);
 		}catch(IOException e)
 		{
 			e.printStackTrace();
@@ -38,7 +41,7 @@ public class BaseDriver {
 		if (prop.getProperty("broswer").equals("chrome")) {
 			System.setProperty("webdriver.chrome.driver", "./Drivers/chromedriver.exe");
 			driver = new ChromeDriver();
-			driver.get("https://www.j2store.org/demo-stores.html");
+			driver.get(prop.getProperty("QAURL"));
 			driver.manage().window().maximize();
 		} else if (prop.getProperty("broswer").equals("firefox")) {
 			System.setProperty("webdriver.chrome.driver", "./Drivers/chromedriver.exe");

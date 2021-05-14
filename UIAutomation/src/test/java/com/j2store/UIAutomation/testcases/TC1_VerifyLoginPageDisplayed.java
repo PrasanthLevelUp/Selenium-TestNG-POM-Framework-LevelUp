@@ -9,12 +9,16 @@ import com.j2store.UIAutomation.baseDrivers.BaseDriver;
 import com.j2store.UIAutomation.pages.HomePage;
 import com.j2store.UIAutomation.pages.LoginPage;
 import com.j2store.UIAutomation.reports.ExtentReportFiles;
+import com.j2store.UIAutomation.testdata.ExcelApachePOITestData;
+import com.j2store.UIAutomation.utils.SeleniumUtils;
 
 public class TC1_VerifyLoginPageDisplayed extends BaseDriver{
 	
 	HomePage home;
 	LoginPage login;
 	ExtentReportFiles report;
+	ExcelApachePOITestData testdata;
+	SeleniumUtils utils;
 	
 	TC1_VerifyLoginPageDisplayed(){
 		super();
@@ -23,21 +27,17 @@ public class TC1_VerifyLoginPageDisplayed extends BaseDriver{
 	@BeforeMethod
 	public void preRequest() {
 		launchDriver();
-		report = new ExtentReportFiles("TC1_VerifyLoginPageDisplayed");
-		String test = prop.getProperty("Test");
+		TCName = getClass().getName();
+		testdata = new ExcelApachePOITestData();
+		report = new ExtentReportFiles();
+		utils = new SeleniumUtils();
 	}
 	
 	@Test(priority=1,enabled=false)
 	public void verifyHomePage() {
 		String actualUrl = driver.getCurrentUrl();
 		String expectedUrl = "https://www.j2store.org/demo-stores.html";
-		try {
-		Assert.assertEquals(actualUrl, expectedUrl);
-		report.passlog("The home page url is displayed");
-		}catch(Exception e) {
-			report.faillog("The home page url is not displayed");
-			report.infolog(e.getMessage());
-		}
+		utils.equalsstring(actualUrl, expectedUrl,"The home page url is displayed");
 	}
 	
 	@Test(priority=2,enabled=false)
@@ -46,17 +46,17 @@ public class TC1_VerifyLoginPageDisplayed extends BaseDriver{
 		login= home.clickLogin();
 		String actualTitle = login.getpageTitle();
 		String expectedTitle = "Login";
-		Assert.assertEquals(actualTitle, expectedTitle);
+		utils.equalsstring(actualTitle, expectedTitle,"The home page url is displayed");
 	}
 	
 	@Test(priority=3)
 	public void verifyValidLogin() {
 		home = new HomePage();
 		login= home.clickLogin();
-		login.login("prasanth", "niho");
+		login.login(testdata.getData("UserName"), testdata.getData("Password"));
 		String actualUrl = driver.getCurrentUrl();
 		String expectedUrl = "https://www.j2store.org/";
-		Assert.assertTrue(actualUrl.contains(expectedUrl));
+		utils.containsstring(actualUrl, expectedUrl, "Home is disaplayed");
 	}
 	
 	@AfterMethod

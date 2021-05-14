@@ -20,10 +20,10 @@ public class ExtentReportFiles extends BaseDriver{
 	public static ExtentSparkReporter spark;
 	public static ExtentTest test;
 	
-	public ExtentReportFiles(String TC){
+	public ExtentReportFiles(){
 		spark = new ExtentSparkReporter(System.getProperty("user.dir")+"/target/reports.html");
 		extent.attachReporter(spark);
-		test = extent.createTest(TC);
+		test = extent.createTest(TCName);
 	}
 	
 	public void passlog(String step) {
